@@ -52,3 +52,30 @@ bun run <script name>
 * Consult when stuck, consult when stuck, consult when stuck.
 * Keep your commit messages discriptive and clean to help reviews when going back to old commits.
 * Document your work for co-workers to help them understand and follow along with what you have achieved.
+## Recommended folder tree:
+```sh
+my-backend/
+├── src/
+│   ├── config/             # Env config, app settings
+│   │   └── index.ts
+│   ├── controllers/        # Route handler logic
+│   │   └── user.controller.ts
+│   ├── routes/             # Route definitions
+│   │   └── user.routes.ts
+│   ├── services/           # Business logic
+│   │   └── user.service.ts
+│   ├── middlewares/        # Custom Express middlewares
+│   │   └── auth.middleware.ts
+│   ├── models/             # DB models or schemas (Prisma, Mongoose, etc.)
+│   │   └── user.model.ts
+│   ├── utils/              # Helper functions (e.g., logger, tokenGen)
+│   ├── types/              # Shared TypeScript interfaces/types
+│   ├── app.ts              # Express app instance (no listen)
+│   └── index.ts            # Entry point (calls `app.listen`)
+├── .env                    # Environment variables
+├── .gitignore
+├── bun.lockb
+├── package.json
+├── tsconfig.json
+└── README.md
+```
