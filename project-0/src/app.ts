@@ -3,21 +3,35 @@ import mockRoutes from './routes/mock.routes';
 
 const app = express();
 
+// Middleware to parse JSON request bodies
+// This is essential for Express to understand JSON data sent from the front-end
 app.use(express.json());
-//to understand the JSON data sent
 
+// Basic health check endpoint
 app.get('/', (req, res) => {
   res.status(200).send('Elite Care Project0 API is running!');
 });
-//to check if the api is working
 
+// --- Mount our API routes ---
+
+// Mount mock routes under the '/api/mock' base path
+// This means all routes defined in mock.routes.ts (e.g., '/mockData')
+// will be accessible at '/api/mock/mockData'
 app.use('/api/mock', mockRoutes);
-//to get the data
 
-app.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {
+// Error handling middleware
+// This middleware catches any errors that occur during request processing.
+// Express recognizes a middleware with four arguments (err, req, res, next)
+// as an error-handling middleware.
+
+app.use((err: any, req: express.Request, res: express.Response) => {
+
+    // Log the error stack to the console for debugging purposes.
     console.error(err.stack);
+
+    // Send a 500 Internal Server Error response to the client.
+    // This indicates that something unexpected went wrong on the server.
     res.status(500).send('Something went wrong!');
 });
-//in case of an error
 
 export default app;
