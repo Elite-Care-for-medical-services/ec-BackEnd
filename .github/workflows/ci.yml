@@ -1,0 +1,47 @@
+name : BACKEND CI 
+on: 
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install Bun
+        uses: oven-sh/setup-bun@v1
+
+      - name: Install dependencies
+        run: |
+          cd 0-project
+          bun install
+
+      - name: Lint code
+        run: |
+          cd 0-project
+          bun run lint
+          
+      - name: Start server
+        run: |
+           cd 0-project
+           bun run start &
+
+      - name: Wait for server to start
+        run: |
+           cd 0-project
+           sleep 3
+
+      - name: Health check
+        run: |
+          cd 0-project
+          curl --fail http://localhost:3000/api/health
+
+
+
+
+
+          
