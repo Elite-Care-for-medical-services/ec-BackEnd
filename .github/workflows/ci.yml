@@ -1,4 +1,4 @@
-name : BACKEND CI 
+name: BACKEND CI
 on: 
   push:
     branches: [main]
@@ -20,25 +20,20 @@ jobs:
           cd project-0
           bun install
 
-      #- name: Lint code
-       # run: |
-        #  cd project-0
-         # bun run lint
-          
-      
+      # Optional linting
+      # - name: Lint code
+      #   run: |
+      #     cd project-0
+      #     bun run lint
+
       - name: Start server
         run: |
           cd project-0
-          bun run start
+          bun run start > bun.log 2>&1 &
           sleep 5
-        
+          cat bun.log  # Useful to debug if server fails
+
       - name: Health check
         run: |
           cd project-0
-          curl --fail http://localhost:3000/
-
-
-
-
-
-          
+          curl --fail http://localhost:3000/api/health
