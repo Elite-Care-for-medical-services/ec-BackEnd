@@ -3,10 +3,17 @@
   "module": "index.ts",
   "type": "module",
   "scripts": {
-    "start": "bun --watch src/index.ts"
+    "start": "bun --watch src/index.ts",
+    "lint": "eslint . --ext .ts"
   },
   "devDependencies": {
-    "@types/bun": "latest"
+    "@types/bun": "latest",
+    "@typescript-eslint/eslint-plugin": "^8.34.1",
+    "@typescript-eslint/parser": "^8.34.1",
+    "eslint": "^9.29.0",
+    "eslint-config-prettier": "^10.1.5",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-node": "^11.1.0"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
