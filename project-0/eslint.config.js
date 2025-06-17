@@ -1,6 +1,7 @@
 /** @type {import("eslint").Linter.Config} */
 module.exports = {
   root: true,
+  ignores: ["node_modules/", "dist/", "build/", "bun.lockb"],
   parser: "@typescript-eslint/parser",
   parserOptions: {
     ecmaVersion: 2020,
