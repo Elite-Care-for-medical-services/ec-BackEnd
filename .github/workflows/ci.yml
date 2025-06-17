@@ -20,7 +20,7 @@ jobs:
           cd project-0
           bun install
 
-      # Optional linting
+     
       # - name: Lint code
       #   run: |
       #     cd project-0
@@ -31,7 +31,7 @@ jobs:
           cd project-0
           bun run start > bun.log 2>&1 &
           sleep 5
-          cat bun.log  # Useful to debug if server fails
+      
 
       - name: Health check
         run: |
