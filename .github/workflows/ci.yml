@@ -17,27 +17,27 @@ jobs:
 
       - name: Install dependencies
         run: |
-          cd 0-project
+          cd project-0
           bun install
 
       - name: Lint code
         run: |
-          cd 0-project
+          cd project-0
           bun run lint
           
       - name: Start server
         run: |
-           cd 0-project
+           cd project-0
            bun run start &
 
       - name: Wait for server to start
         run: |
-           cd 0-project
+           cd project-0
            sleep 3
 
       - name: Health check
         run: |
-          cd 0-project
+          cd project-0
           curl --fail http://localhost:3000/api/health
 
 
