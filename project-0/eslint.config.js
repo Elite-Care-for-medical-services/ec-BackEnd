@@ -1,10 +1,8 @@
 // eslint.config.js
 import eslintPluginImport from "eslint-plugin-import";
-import eslintPluginNode from "eslint-plugin-node";
 import eslintPluginTS from "@typescript-eslint/eslint-plugin";
 import tsParser from "@typescript-eslint/parser";
 import eslintPluginSecurity from "eslint-plugin-security";
-import eslintPluginUnicorn from "eslint-plugin-unicorn";
 import eslintPluginStylistic from "@stylistic/eslint-plugin";
 import eslintPluginPrettier from "eslint-plugin-prettier";
 
@@ -28,9 +26,7 @@ export default [
     plugins: {
       "@typescript-eslint": eslintPluginTS,
       import: eslintPluginImport,
-      node: eslintPluginNode,
       security: eslintPluginSecurity,
-      unicorn: eslintPluginUnicorn,
       "@stylistic": eslintPluginStylistic,
       prettier: eslintPluginPrettier,
     },
@@ -61,18 +57,8 @@ export default [
         },
       ],
 
-      // Node and Unicorn
-      "node/no-unsupported-features/es-syntax": "off",
-      "node/no-missing-import": "off",
-      "unicorn/prefer-node-protocol": "warn",
-
       // Prettier
       "prettier/prettier": "warn",
-    },
-    settings: {
-      node: {
-        tryExtensions: [".ts", ".js", ".json", ".node"],
-      },
     },
   },
 ];
