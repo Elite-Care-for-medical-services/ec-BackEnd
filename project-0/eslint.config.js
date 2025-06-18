@@ -3,6 +3,10 @@ import eslintPluginImport from "eslint-plugin-import";
 import eslintPluginNode from "eslint-plugin-node";
 import eslintPluginTS from "@typescript-eslint/eslint-plugin";
 import tsParser from "@typescript-eslint/parser";
+import eslintPluginSecurity from "eslint-plugin-security";
+import eslintPluginUnicorn from "eslint-plugin-unicorn";
+import eslintPluginStylistic from "@stylistic/eslint-plugin";
+import eslintPluginPrettier from "eslint-plugin-prettier";
 
 export default [
   {
@@ -25,15 +29,23 @@ export default [
       "@typescript-eslint": eslintPluginTS,
       import: eslintPluginImport,
       node: eslintPluginNode,
+      security: eslintPluginSecurity,
+      unicorn: eslintPluginUnicorn,
+      "@stylistic": eslintPluginStylistic,
+      prettier: eslintPluginPrettier,
     },
     rules: {
+      // Best practices
       "no-console": "warn",
-      "no-unused-vars": "off",
+      "no-unused-vars": "warn",
       "@typescript-eslint/no-unused-vars": [
         "warn",
         { argsIgnorePattern: "^_" },
       ],
+      "@typescript-eslint/no-explicit-any": "warn",
+      "@typescript-eslint/explicit-function-return-type": "off",
 
+      // Import order
       "import/order": [
         "warn",
         {
@@ -49,11 +61,18 @@ export default [
         },
       ],
 
-      "@typescript-eslint/explicit-function-return-type": "off",
-      "@typescript-eslint/no-explicit-any": "warn",
-
+      // Node and Unicorn
       "node/no-unsupported-features/es-syntax": "off",
       "node/no-missing-import": "off",
+      "unicorn/prefer-node-protocol": "warn",
+
+      // Prettier
+      "prettier/prettier": "warn",
+    },
+    settings: {
+      node: {
+        tryExtensions: [".ts", ".js", ".json", ".node"],
+      },
     },
   },
 ];
