@@ -21,10 +21,10 @@ jobs:
           bun install
 
      
-      # - name: Lint code
-      #   run: |
-      #     cd project-0
-      #     bun run lint
+      - name: Lint code
+        run: |
+           cd project-0
+           bun run lint
 
       - name: Start server
         run: |
