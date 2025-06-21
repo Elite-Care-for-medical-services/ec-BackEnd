@@ -24,7 +24,9 @@ jobs:
          bun install
 
       - name: Build the backend 
-        run: bun run build
+        run: |
+         cd project-0
+         bun run build
 
       - name: Deploy backend via SSH
         uses: appleboy/ssh-action@v1.0.3
